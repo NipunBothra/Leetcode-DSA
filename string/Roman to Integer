@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int getInt(char C)
+    {
+        if(C=='I')
+        return 1;
+        else if(C=='V')
+        return 5;
+        else if(C=='X')
+        return 10;
+        else if(C=='L')
+        return 50;
+        else if(C=='C')
+        return 100;
+        else if(C=='D')
+        return 500;
+        else if(C=='M')
+        return 1000;
+        else
+        return -1;
+    }
+    int romanToInt(string s) {
+        int n=s.size(), result=0, i=0, current, next;
+        while(i<n)
+        {
+            if(i==n-1)
+            {
+                result+=getInt(s[i]);
+                return result;
+            }
+            current=getInt(s[i]);
+            next=getInt(s[i+1]);
+            if(current>=next)
+            {
+                result=result+current;
+                i++;
+            }
+            else
+            {
+                result+= next-current;
+                i=i+2;
+            }
+        }
+        return result;
+    }
+};
