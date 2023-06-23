@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        //trim(s);
+        int n = s.size();
+        int start,end;
+        
+        start=0;
+        while(start< n && s[start]==' ') start++;      //left trim
+        
+        end=n-1;
+        while(end >=0 && s[end]==' ') end--;         //right trim
+        
+        if(start>end) return 0;
+        int pos=end;
+        while(pos>=start)
+        {
+            if(s[pos]==' ') break;
+            pos--;
+        }
+        
+        int count = end - pos;
+        return count;
+        
+    }
+};
