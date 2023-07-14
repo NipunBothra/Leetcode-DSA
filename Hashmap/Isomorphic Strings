@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        unordered_map<char, char> mp;
+        unordered_set<char> st;
+        int n=s.length(), m=t.length();
+        if(n!=m)
+        return false;
+        for(int i=0;i<n;i++)
+        {
+            char x=s[i], y=t[i];
+            if(mp.find(x)!=mp.end())
+            {
+                if(mp[x]!=y)
+                return false;
+                else
+                continue;
+            }
+            else
+            {
+                if(st.find(y)!=st.end())
+                return false;
+                mp[x]=y;
+                st.insert(y);
+            }
+        }
+        return true;
+    }
+};
