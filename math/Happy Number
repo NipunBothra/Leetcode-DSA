@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        int rem;
+        int temp=n;
+        int sum=n, x=n;
+        if(n==1 || n==7)
+        return true;
+        while(sum>9)
+        {
+            sum=0;
+            while(x>0)
+            {
+                rem=x%10;
+                sum += rem*rem;
+                x=x/10;
+            }
+            if(sum==1)
+            return true;
+            x=sum;
+        }
+        if(sum==7)
+        return true;
+        return false;
+    }
+};
