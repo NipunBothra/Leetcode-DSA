@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool dfs(unordered_map<int, vector<int>>&graph, vector<bool>& seen, int curr, int destination)
+    {
+        if(curr==destination)
+        return true;
+        if(!seen[curr])
+        {
+            seen[curr]=true;
+            for(auto& next:graph[curr])
+            {
+                if(dfs(graph, seen, next, destination))
+                return true;
+            }
+        }
+        return false;
+    }
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        unordered_map<int, vector<int>> graph;
+        for(auto& e:edges)
+        {
+            int a=e[0], b=e[1];
+            graph[a].push_back(b);
+            graph[b].push_back(a);
+        }
+        vector<bool> seen(n);
+        return dfs(graph, seen, source, destination);
+    }
+};
