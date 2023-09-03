@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> relocateMarbles(vector<int>& nums, vector<int>& moveFrom, vector<int>& moveTo) {
+        int n=nums.size();
+        map<int, long long int> freq;
+        for(int i=0;i<n;i++)
+        {
+            freq[nums[i]]++;
+        }
+        int m=moveFrom.size();
+        for(int i=0;i<m;i++)
+        {
+            freq[moveTo[i]] +=freq[moveFrom[i]];
+            if(moveFrom[i]!=moveTo[i])
+            freq[moveFrom[i]]=0;
+        }
+        vector<int> ans;
+        for(auto i=freq.begin(); i!=freq.end(); i++)
+        {
+            if(i->second>0)
+            ans.push_back(i->first);
+        }
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
