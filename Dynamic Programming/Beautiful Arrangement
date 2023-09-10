@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int count=0;
+    void calc(int n, int pos, vector<bool> visit)
+    {
+        if(pos>n)
+        count++;
+        for(int i=1;i<=n;i++)
+        {
+            if(!visit[i] && (pos%i==0 || i%pos==0))
+            {
+                visit[i]=true;
+                calc(n, pos+1, visit);
+                visit[i]=false;
+            }
+        }
+    }
+    int countArrangement(int n) {
+        vector<bool> visit(n+1);
+        calc(n, 1, visit);
+        return count;
+    }
+};
