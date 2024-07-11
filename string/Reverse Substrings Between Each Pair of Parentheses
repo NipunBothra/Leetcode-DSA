@@ -1,0 +1,27 @@
+class Solution {
+public:
+int i=0;
+    string reverseParentheses(string s) {
+        return reverseStr(s);
+    }
+    string reverseStr(string& s){
+        string res;
+        while(i<s.length()){
+            if(s[i]==')'){
+                i++;
+                reverse(res.begin(), res.end());
+                return res;
+            }
+            else if(s[i]=='('){
+                i++;
+                string st=reverseStr(s);
+                res=res+st;
+            }
+            else{
+                res=res+s[i];
+                i++;
+            }
+        }
+        return res;
+    }
+};
