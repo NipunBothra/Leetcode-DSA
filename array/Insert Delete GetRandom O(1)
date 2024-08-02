@@ -1,0 +1,36 @@
+class RandomizedSet {
+public:
+unordered_set<int>st;
+    RandomizedSet() {
+        st={};
+    }
+    
+    bool insert(int val) {
+        if(st.find(val)!=st.end())
+        return 0;
+        st.insert(val);
+        return 1;
+    }
+    
+    bool remove(int val) {
+        auto i=st.find(val);
+        if(i!=st.end()){
+            st.erase(i);
+            return 1;
+        }
+        return 0;
+    }
+    
+    int getRandom() {
+        int n=rand();
+        return *next(st.begin(), n%st.size());
+    }
+};
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet* obj = new RandomizedSet();
+ * bool param_1 = obj->insert(val);
+ * bool param_2 = obj->remove(val);
+ * int param_3 = obj->getRandom();
+ */
