@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string addSpaces(string s, vector<int>& spaces) {
+        string result;
+        result.reserve(s.size() + spaces.size());
+        int i = 0;
+        for (int stringIndex = 0; stringIndex < s.size(); ++stringIndex) {
+            if (i < spaces.size() &&
+                stringIndex == spaces[i]) {
+                result += ' ';
+                ++i;
+            }
+            result += s[stringIndex];
+        }
+        return result;
+    }
+};
