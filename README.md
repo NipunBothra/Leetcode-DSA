@@ -1,5 +1,5 @@
 # Leetcode-DSA
-Covers solutions to various Leetcode Problems
-Questions distributed per topic
-Interview and Trending Company Questions
-200+ Leetcode solutions
+1. Covers solutions to various Leetcode Problems
+2. Questions distributed per topic
+3. Interview and Trending Company Questions
+4. 200+ Leetcode solutions
