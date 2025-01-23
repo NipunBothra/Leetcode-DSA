@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int countServers(vector<vector<int>>& grid) {
+        vector<int> rowCount(grid[0].size(),0);
+        vector<int> colCount(grid.size(),0);
+        for(int row=0;row<grid.size();row++){
+            for(int col=0;col<grid[0].size();col++){
+                if(grid[row][col]!=0){
+                    rowCount[col]++;
+                    colCount[row]++;
+                }
+            }
+        }
+        int count=0;
+        for(int row=0;row<grid.size();row++){
+            for(int col=0;col<grid[0].size();col++){
+                if(grid[row][col]!=0)
+                count += rowCount[col]>1 || colCount[row]>1;
+            }
+        }
+        return count;
+    }
+};
