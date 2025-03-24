@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        unordered_map<int, int> trusted;
+        unordered_map<int, int> trusts;
+        for(auto tr:trust){
+            trusted[tr[1]]++;
+            trusts[tr[0]]++;
+        }
+        for(int i=1;i<=n;i++){
+            if(trusted[i]==n-1 && trusts[i]==0)
+            return i;
+        }
+        return -1;
+    }
+};
