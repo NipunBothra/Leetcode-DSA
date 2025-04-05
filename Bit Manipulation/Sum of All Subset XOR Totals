@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        return XORSum(nums, 0, 0);
+    }
+    int XORSum(vector<int>& nums, int index, int currXor){
+        if(index==nums.size())
+        return currXor;
+        int with = XORSum(nums, index+1, currXor^nums[index]);
+        int without=XORSum(nums, index+1, currXor);
+        return with+without;
+    }
+};
