@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        if(s.length()==1)
+        return 1;
+        unordered_map<char, int> mp;
+        for(int i=0;i<s.length();i++){
+            mp[s[i]]++;
+        }
+        int res=0;
+        bool odd=false;
+        for(auto it:mp){
+            int freq=it.second;
+            if(freq%2==0)
+            res += freq;
+            else{
+                res+=freq-1;
+                odd=true;
+            }
+        }
+        if(odd)
+        return res+1;
+        return res;
+    }
+};
