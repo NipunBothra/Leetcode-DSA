@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string processStr(string s) {
+        int n=s.length();
+        string res="";
+        for(char c:s){
+            if(c!='#' && c!='*' && c!='%')
+                res=res+c;
+            else if(c=='#')
+                res=res+res;
+            else if(c=='%')
+                reverse(res.begin(), res.end());
+            else{
+                if(!res.empty())
+                    res.pop_back();
+            }
+        }
+        return res;
+    }
+};
