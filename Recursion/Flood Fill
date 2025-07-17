@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int check=image[sr][sc];
+        traverse(sr, sc, image, check, color);
+        return image;
+    }
+    void traverse(int sr, int sc, vector<vector<int>>& image, int check, int color){
+        if(sr<0 || sc<0 || sr>=image.size() || sc>=image[0].size() || image[sr][sc]!=check || image[sr][sc]==color)
+        return;
+
+        image[sr][sc]=color;
+        traverse(sr+1, sc, image, check, color);
+        traverse(sr-1, sc, image, check, color);
+        traverse(sr, sc+1, image, check, color);
+        traverse(sr, sc-1, image, check, color);
+    }
+};
